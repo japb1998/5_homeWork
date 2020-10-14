@@ -35,10 +35,10 @@ function getInfo() {
         var row = $('<div>').attr('class', 'row time-block');
         var timeEl = $('<div>').attr('class', 'col-2  hour');
 
-        var textEl = $('<textarea>').attr('class', 'col-8 textarea description').attr('data-index', index).text('hello')
+        var textEl = $('<textarea>').attr('class', 'col-8 textarea description').attr('data-index', index)
         var saveBtn = $('<div>').attr('class', 'col-2 saveBtn').append('<i class="fas fa-save fa-2x"></i>');
         var hourEl;
-    
+
         if (i < 12) {
             hourEl = `${i}am`;
             timeEl.attr('data-time', i);
@@ -56,7 +56,7 @@ function getInfo() {
         } else if (parseInt(timeEl.attr('data-time')) > parseInt(today)) {
             textEl.addClass('future')
         } else if (parseInt(timeEl.attr('data-time')) == parseInt(today)) {
-            timeEl.addClass('present')
+            textEl.addClass('present')
         }
         timeEl.append(hourEl)
         row.append(timeEl).append(textEl).append(saveBtn);
@@ -69,6 +69,8 @@ function getInfo() {
 }
 getInfo();
 
+  
+
 $('.saveBtn').on('click', function (e) {
     var valueEl = $(this).siblings('textarea').val();
     console.log(valueEl);
@@ -79,3 +81,15 @@ $('.saveBtn').on('click', function (e) {
 
     localStorage.setItem(`plansToday`, JSON.stringify(dailyPlanner));
 });
+
+
+function checkHour (){
+    console.log('hello')
+     if (parseInt($('textarea').attr('data-time')) < parseInt(today)) {
+    textEl.addClass('past');
+} else if (parseInt($('textarea').attr('data-time')) > parseInt(today)) {
+    textEl.addClass('future')
+} else if (parseInt($('textarea').attr('data-time')) == parseInt(today)) {
+    textEl.addClass('present')
+}}
+setInterval( checkHour, 60*1000);
