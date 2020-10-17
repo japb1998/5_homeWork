@@ -12,7 +12,7 @@ contains an index.html file with the structure of my app, a  style.css giving th
 
 
 ## APP
-![screenshot of the app](./img1.png)
+![screenshot of the app](./img.1.png)
 ## Events colors
 * when the event's hour alrady past, the text box would be gray as shown.
 * when it is the current hour the textbox would be red.
